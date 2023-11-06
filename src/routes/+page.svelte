@@ -17,24 +17,25 @@
 </svelte:head>
 
 <div class="base">
-	<img class="shirt" src="/shirt.svg" alt="" />
+	<div class="wrap">
+		<img class="shirt" src="/shirt.svg" alt="" />
+		<div class="container">
+			<div class="glow" />
+			<div class="inner-glow" />
 
-	<div class="container">
-		<div class="glow" />
-		<div class="inner-glow" />
-
-		<div class="strips">
-			<div class="grad" />
-			<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
-				<defs>
-					<clipPath id="stripClip">
-						<rect x="0" y="0" width="300" height={top} />
-						{#each Array(11) as _, i}
-							<rect x="0" y={y(i)} width="300" height={h(i)} />
-						{/each}
-					</clipPath>
-				</defs>
-			</svg>
+			<div class="strips">
+				<div class="grad" />
+				<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+					<defs>
+						<clipPath id="stripClip">
+							<rect x="0" y="0" width="300" height={top} />
+							{#each Array(11) as _, i}
+								<rect x="0" y={y(i)} width="300" height={h(i)} />
+							{/each}
+						</clipPath>
+					</defs>
+				</svg>
+			</div>
 		</div>
 	</div>
 	<h2>how beautiful is this, friends?</h2>
@@ -54,16 +55,29 @@
 		font-family: 'Fira Code', monospace;
 		overflow: hidden;
 	}
+
+	.wrap {
+		position: relative;
+		width: 300px;
+		height: 300px;
+	}
 	.shirt {
 		position: absolute;
-		scale: 70%;
-		translate: 0 150px;
 		opacity: 0.4;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+		scale: 350%;
+		translate: 0 170px;
 	}
+
 	h2 {
 		background: linear-gradient(110deg, rgb(249, 194, 50) 0%, rgba(255, 70, 249, 1) 100%);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+		white-space: nowrap;
+		font-size: 1.1rem;
 	}
 	.container {
 		position: relative;
